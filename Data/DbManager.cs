@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 
-namespace WpfApp2.Services;
+namespace Calendar.Services;
 
 public class DbManager
 {

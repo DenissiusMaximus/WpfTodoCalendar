@@ -1,4 +1,7 @@
-﻿namespace WpfApp2.Data;
+﻿using Calendar.Models;
+using Calendar.Services;
+
+namespace Calendar.Data;
 
 public class EventRepository
 {

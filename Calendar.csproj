@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <RootNamespace>WpfApp2</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+      <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="9.0.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="EditEventUserControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+</Project>

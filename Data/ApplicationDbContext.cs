@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Calendar.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace WpfApp2.Data;
+namespace Calendar.Data;
 
 public class ApplicationDbContext : DbContext
 {

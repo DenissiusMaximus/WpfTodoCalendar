@@ -1,0 +1,35 @@
+﻿<Page x:Class="Calendar.EventManager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Calendar"
+      mc:Ignorable="d"
+      Title="EventManager">
+    <Grid Margin="0 40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="8" Background="#f4f4f4"
+                Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Click="AddEventButton_OnClick" Grid.Column="0" Content="Add" Style="{StaticResource TransparentButtonNoS}" Margin="5"/>
+                <Button Click="EditEventButton_OnClick" Grid.Column="1" Content="Edit" Style="{StaticResource TransparentButtonNoS}" Margin="5"/>
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="8" Background="#f4f4f4"
+                Padding="5 20" Margin="10">
+            
+            <ContentControl x:Name="EventContentHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        </Border>
+    </Grid>
+</Page>
