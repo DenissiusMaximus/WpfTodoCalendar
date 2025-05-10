@@ -1,5 +1,4 @@
 ﻿using Calendar.Data;
-using Calendar.Models;
 
 namespace Calendar;
 
@@ -129,5 +128,22 @@ public partial class EditEventUserControl : UserControl
         
 
         MessageBox.Show("Event edited successfully!");
+    }
+
+    public void DeleteSelected_ButtonClick(object sender, RoutedEventArgs e)
+    {
+        var result = MessageBox.Show("Delete selected events?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+        if (result == MessageBoxResult.Yes)
+        {
+            DeleteSelectedEvents();
+        }
+
+    }
+
+    private void DeleteSelectedEvents()
+    {
+        var rep = new EventRepository();
+        rep.DeleteEventAsync(_event);
     }
 }

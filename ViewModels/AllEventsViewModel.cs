@@ -7,11 +7,11 @@ public class AllEventsViewModel : EventsAssign, INotifyPropertyChanged
 {
     public static ObservableCollection<DayEventViewModelINotifyPropertyChanged>? SelectedEvents { get; set; } = new();
     
-    
     public AllEventsViewModel()
     {
         LoadEventsAsync();
     }
+
 
     public override void OnEventAdded(object sender, DayEventViewModel dayEvent)
     {

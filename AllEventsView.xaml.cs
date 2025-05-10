@@ -1,4 +1,5 @@
-﻿using Calendar.Services;
+﻿using Calendar.Data;
+using Calendar.Services;
 using Calendar.ViewModels;
 
 namespace Calendar;
@@ -20,5 +21,38 @@ public partial class AllEventsView : Page, ICalendarEventsView<AllEventsViewMode
     {
         DataContext = null;
         DataContext = ViewModel;
+    }
+    public void ClearSelected_ButtonClick(object sender, RoutedEventArgs e)
+    {
+        AllEventsViewModel.SelectedEvents.Clear();
+    }
+
+
+
+    public void DeleteSelected_ButtonClick(object sender, RoutedEventArgs e)
+    {
+        if (AllEventsViewModel.SelectedEvents.ToList().Count() == 0)
+            return;
+
+        var result = MessageBox.Show("Delete selected events?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+        if (result == MessageBoxResult.Yes)
+        {
+            DeleteSelectedEvents();
+        }
+
+    }
+
+    private void DeleteSelectedEvents()
+    {
+        var eventsToDelete = AllEventsViewModel.SelectedEvents.ToList();
+
+        foreach (var selectedEvent in eventsToDelete)
+        {
+            var rep = new EventRepository();
+            rep.DeleteEventAsync(selectedEvent);
+
+            AllEventsViewModel.SelectedEvents.Remove(selectedEvent);
+        }
     }
 }

@@ -14,16 +14,18 @@ public class EventRepository
         _dbManager = new DbManager(dbPath);
     }
     
-    public async Task DeleteEventAsync(int id)
+    public async Task DeleteEventAsync(Event e)
     {
         using var connection = _dbManager.GetConnection();
         await connection.OpenAsync();
         
         var command = connection.CreateCommand();
         command.CommandText = "DELETE FROM Events WHERE Id = @id";
-        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@id", e.Id);
         
         await command.ExecuteNonQueryAsync();
+
+        EventUpdated?.Invoke(this, new DayEventViewModel(e));
     }
 
     public async Task EditEventAsync(Event e)

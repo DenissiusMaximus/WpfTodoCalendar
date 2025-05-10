@@ -103,7 +103,7 @@ namespace Calendar {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Calendar;V1.0.0.0;component/addeventusercontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Calendar;component/addeventusercontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddEventUserControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

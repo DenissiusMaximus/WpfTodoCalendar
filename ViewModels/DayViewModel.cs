@@ -10,6 +10,7 @@ public class DayViewModel : EventsAssign
     public string FormattedDate { get; set; }
     public string FormattedShortDate { get; set; }
     public string FormattedTime { get; set; }
+    public bool IsToday => Date.Date == DateTime.Now.Date;
 
     public DayViewModel(DateTime date)
     {
@@ -31,29 +32,4 @@ public class DayViewModel : EventsAssign
             AddSingleEvent(new DayEventViewModel(e));
         }
     }
-}
-
-public class WeekDayViewModel : DayViewModel, INotifyPropertyChanged
-{
-    private WeatherForecast? _weatherForecast;
-    public string? Temperature => _weatherForecast != null ? $"{_weatherForecast?.Temperature}°C " : null;
-    public string? Sky => _weatherForecast != null ? _weatherForecast.Sky : null;
-
-    public WeekDayViewModel(DateTime date) : base(date)
-    {
-        LoadEventsAsync();
-        LoadWeatherForecastAsync(date);
-    }
-
-
-    private async Task LoadWeatherForecastAsync(DateTime date)
-    {
-        _weatherForecast = await WeatherForecasts.GetForecastsList(date);
-        OnPropertyChanged(nameof(Temperature));
-        OnPropertyChanged(nameof(Sky));
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged(string propertyName)
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

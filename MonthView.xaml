@@ -96,8 +96,9 @@
                         <Border Style="{StaticResource GridCellBorderStyle}">
                             <ScrollViewer Style="{StaticResource GridCellScrollViewerStyle}">
                                 <StackPanel Orientation="Vertical">
-                                    <Border CornerRadius="12"  Width="24" Margin="2" Padding="2" Background="{Binding}" BorderThickness="1.5" BorderBrush="{Binding BorderColor}" VerticalAlignment="Top" HorizontalAlignment="Right">
-                                        <TextBlock Text="{Binding Date.Day}" HorizontalAlignment="Center" Foreground="{Binding DayColor}" VerticalAlignment="Center"/>
+                                    <Border Style="{StaticResource DayCellStyle}">
+
+                                        <TextBlock Text="{Binding Date.Day}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource DayTextStyle}"/>
                                     </Border>
                                     <ItemsControl ItemsSource="{Binding Events}">
                                         <ItemsControl.ItemTemplate>

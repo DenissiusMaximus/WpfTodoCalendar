@@ -5,7 +5,7 @@ namespace Calendar.ViewModels;
 public class MonthViewModel : CalendarElementViewModel
 {
     public ObservableCollection<MonthDayViewModel> DaysVMList { get; set; } = new();
-    private List<(string color, DateTime day)> DaysDatesList { get; set; }
+    private List<DateTime> DaysDatesList { get; set; }
 
     public MonthViewModel()
     {
@@ -16,9 +16,9 @@ public class MonthViewModel : CalendarElementViewModel
     {
         DaysDatesList = CalendarInfo.GetDaysList();
 
-        foreach (var (k, v)in DaysDatesList)
+        foreach (var i in DaysDatesList)
         {
-            DaysVMList.Add(new MonthDayViewModel(v, k));
+            DaysVMList.Add(new MonthDayViewModel(i));
         }
     }
     
@@ -26,9 +26,9 @@ public class MonthViewModel : CalendarElementViewModel
     {
         var daysList = CalendarInfo.GetDaysList();
         
-        foreach (var (k, v) in daysList)
+        foreach (var i in daysList)
         {
-            ViewDaysList.Add(v.Day.ToString());
+            ViewDaysList.Add(i.Day.ToString());
         }
     }
     

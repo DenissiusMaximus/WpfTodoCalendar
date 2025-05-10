@@ -1,10 +1,11 @@
-﻿namespace Calendar.Services;
+﻿using Calendar.Data;
+
+namespace Calendar.Services;
 
 public interface ICalendarEventsView<T> where T : CalendarElementViewModel, new()
 {
     public T ViewModel { get; set; }
     public ICalendarEventsView<T> Instance { get; set; }
-
     public void SetDataContext();
 
     public void OnStep(object sender, Action<DateChangeDirection> StepHandler)

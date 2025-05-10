@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET9_0;NETCOREAPP
 C:\Users\sloke\RiderProjects\WpfApp2\Calendar\App.xaml
 7-1413951449
 
-331283808747
+341265009729
 220-1048061961
 AddEventUserControl.xaml;AllEventsView.xaml;EditEventUserControl.xaml;EventManager.xaml;MainWindow.xaml;MonthView.xaml;WeekView.xaml;
 
-False
+True
 

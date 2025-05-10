@@ -66,7 +66,7 @@ public static class CalendarInfo
 
         calendarDay = new DateTime(ShowYear, _showDate.Month, 1).AddDays(-firstDayOfCurrWeekNumber + 1);
     }
-    public static List<(string color, DateTime day)> GetDaysList()
+    public static List<DateTime> GetDaysList()
     {
         var firstDayOfCurrMonth = new DateTime(ShowYear, _showDate.Month, 1).DayOfWeek;
         int firstDayOfCurrWeekNumber = (int)firstDayOfCurrMonth;
@@ -79,16 +79,11 @@ public static class CalendarInfo
 
         var cDay = new DateTime(ShowYear, _showDate.Month, 1).AddDays(-firstDayOfCurrWeekNumber + 1);
         
-        List<(string color, DateTime day)> days = new();
+        List<DateTime> days = new();
         
         for (int i = 0; i < 42; i++)
         {
-            if(cDay.AddDays(i).Month == ShowMonth)
-                color = "#000000";
-            else
-                color = "#a3a3a3";
-            
-            days.Add((color, cDay.AddDays(i)));
+            days.Add(cDay.AddDays(i));
         }
         
         

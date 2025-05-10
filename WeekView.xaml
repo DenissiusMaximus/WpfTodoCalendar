@@ -67,7 +67,9 @@
                         <Border Style="{StaticResource GridCellBorderStyle}">
                             <ScrollViewer Style="{StaticResource GridCellScrollViewerStyle}">
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Date.Day}" HorizontalAlignment="Left" />
+                                    <Border Style="{StaticResource DayCellStyle}">
+                                        <TextBlock Text="{Binding Date.Day}" HorizontalAlignment="Center" />
+                                    </Border>
                                     <Grid Width="Auto" Height="Auto">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />

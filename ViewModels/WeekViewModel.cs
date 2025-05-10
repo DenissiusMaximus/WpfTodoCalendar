@@ -1,4 +1,4 @@
-﻿using Calendar.Services;
+﻿using WpfApp2.ViewModels;
 
 namespace Calendar.ViewModels;
 

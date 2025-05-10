@@ -146,7 +146,7 @@
             <Border Grid.Column="1" VerticalAlignment="Bottom" Background="#eaeaea" CornerRadius="10" Padding="5"
                     Margin="5">
                 <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Delete"
-                        Click="DeleteButton_OnClick" Style="{StaticResource TransparentButtonNoS}" />
+                        Click="DeleteSelected_ButtonClick" Style="{StaticResource TransparentButtonNoS}" />
             </Border>
 
             <Border Grid.Column="2" VerticalAlignment="Bottom" Background="#eaeaea" CornerRadius="10"
