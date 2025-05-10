@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Calendar.Models;
 
-namespace global::System.Windows.Controls.Calendar.ViewModels;
+namespace Calendar.ViewModels;
 
 public class DayEventViewModelINotifyPropertyChanged : DayEventViewModel, INotifyPropertyChanged
 {

@@ -10,7 +10,6 @@ public class ApplicationDbContext : DbContext
 
     public ApplicationDbContext()
     {
-        // var folder = AppDomain.CurrentDomain.BaseDirectory;
         DbPath = @"C:\Users\sloke\RiderProjects\WpfApp2\Calendar\Resources\DB\database.sqlite";
     }
 

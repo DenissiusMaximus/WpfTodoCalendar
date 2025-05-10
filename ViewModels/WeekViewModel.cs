@@ -11,11 +11,10 @@ public class WeekViewModel : CalendarElementViewModel
     
     private void FillDaysVMList()
     {
-        for(int i = 0; i <= 6; i++)
+        DaysVMList.Clear();
+        for (int i = 0; i <= 6; i++)
         {
-            DaysVMList.Add(new DayViewModel(CalendarInfo.ShowWeekFirstDay.AddDays(i)));
+            DaysVMList.Add(new WeekDayViewModel(CalendarInfo.ShowWeekFirstDay.AddDays(i)));
         }
     }
-    
-
 }

@@ -141,12 +141,12 @@
             <Border Grid.Column="0" VerticalAlignment="Bottom" Background="#eaeaea" CornerRadius="10" Padding="5"
                     Margin="5">
                 <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Ok"
-                        Click="DeleteButton_OnClick" Style="{StaticResource TransparentButtonNoS}" />
+                        Click="OkButton_OnClick" Style="{StaticResource TransparentButtonNoS}" />
             </Border>
             <Border Grid.Column="1" VerticalAlignment="Bottom" Background="#eaeaea" CornerRadius="10" Padding="5"
                     Margin="5">
                 <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Delete"
-                        Click="OkButton_OnClick" Style="{StaticResource TransparentButtonNoS}" />
+                        Click="DeleteButton_OnClick" Style="{StaticResource TransparentButtonNoS}" />
             </Border>
 
             <Border Grid.Column="2" VerticalAlignment="Bottom" Background="#eaeaea" CornerRadius="10"

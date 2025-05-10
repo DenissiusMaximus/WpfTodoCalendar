@@ -7,6 +7,7 @@ public class EventRepository
 {
     private readonly DbManager _dbManager;
     public static event EventHandler<DayEventViewModel> EventAdded;
+    public static event EventHandler<DayEventViewModel> EventUpdated;
     
     public EventRepository(string dbPath = @"C:\Users\sloke\RiderProjects\WpfApp2\Calendar\Resources\DB\database.sqlite;")
     {
@@ -41,6 +42,8 @@ public class EventRepository
         command.Parameters.AddWithValue("@type", e.Type ?? (object)DBNull.Value);
         
         await command.ExecuteNonQueryAsync();
+        
+        EventUpdated?.Invoke(this, new DayEventViewModel(e));
     }
     
     public async Task<Event> GetEventByIdAsync(int id)

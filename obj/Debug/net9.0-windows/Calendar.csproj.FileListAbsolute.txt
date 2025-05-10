@@ -155,3 +155,4 @@ C:\Users\sloke\RiderProjects\WpfApp2\Calendar\obj\Debug\net9.0-windows\AddEventU
 C:\Users\sloke\RiderProjects\WpfApp2\Calendar\obj\Debug\net9.0-windows\EventManager.baml
 C:\Users\sloke\RiderProjects\WpfApp2\Calendar\obj\Debug\net9.0-windows\EditEventUserControl.g.cs
 C:\Users\sloke\RiderProjects\WpfApp2\Calendar\obj\Debug\net9.0-windows\EditEventUserControl.baml
+C:\Users\sloke\RiderProjects\WpfApp2\Calendar\bin\Debug\net9.0-windows\Newtonsoft.Json.dll

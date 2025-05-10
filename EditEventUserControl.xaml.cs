@@ -111,6 +111,7 @@ public partial class EditEventUserControl : UserControl
         {
             Event newEvent = new Event
             {
+                Id = _event.Id,
                 Name = EventName,
                 Date = EventDateTime,
                 Description = Description,
@@ -119,7 +120,7 @@ public partial class EditEventUserControl : UserControl
             };
             
             var rep = new EventRepository();
-            rep.AddEventAsync(newEvent);
+            rep.EditEventAsync(newEvent);
         }
         catch (Exception ex)
         {
@@ -127,6 +128,6 @@ public partial class EditEventUserControl : UserControl
         }
         
 
-        MessageBox.Show("Event added successfully!");
+        MessageBox.Show("Event edited successfully!");
     }
 }

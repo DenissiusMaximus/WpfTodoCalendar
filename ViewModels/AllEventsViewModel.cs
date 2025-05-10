@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using Calendar.Data;
-using Calendar.Models;
 
 namespace Calendar.ViewModels;
 

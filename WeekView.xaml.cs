@@ -25,9 +25,6 @@ public partial class WeekView : Page, ICalendarEventsView<WeekViewModel>
 
     private void ChangeMonth_Click(object sender, RoutedEventArgs e)
         => Instance.OnStep(sender, CalendarInfo.ChangeShowWeek);
-
-    private void ChangeYear_Click(object sender, RoutedEventArgs e)
-        => Instance.OnStep(sender, CalendarInfo.ChangeShowWeek);
     
     private void EventButton_Click(object sender, RoutedEventArgs e)
     {
