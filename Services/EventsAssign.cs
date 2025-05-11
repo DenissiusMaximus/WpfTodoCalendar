@@ -11,8 +11,9 @@ public class EventsAssign : CalendarElementViewModel
     {
         EventRepository.EventAdded += OnEventAdded;
         EventRepository.EventUpdated += OnEventUpdated;
-    }    
-    public virtual void OnEventUpdated(object sender, DayEventViewModel dayEvent)
+    }
+    
+    public void UpdateEvent(DayEventViewModel dayEvent)
     {
         if (Events != null)
         {
@@ -25,20 +26,12 @@ public class EventsAssign : CalendarElementViewModel
             }
         }
     }
-
-    public virtual void OnEventRemoved(object sender, DayEventViewModel dayEvent)
+    
+    public virtual void OnEventUpdated(object sender, DayEventViewModel dayEvent)
     {
-        if (Events != null)
-        {
-            var existing = Events.FirstOrDefault(ev => ev.Id == dayEvent.Id);
-            if (existing != null)
-            {
-                int index = Events.IndexOf(existing);
-                Events.RemoveAt(index);
-            }
-        }
+        UpdateEvent(dayEvent);
     }
-
+    
     public virtual void OnEventAdded(object sender, DayEventViewModel dayEvent)
     {
         if (Date != null && dayEvent != null && Date.Date == dayEvent.Date.Date)

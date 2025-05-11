@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Calendar"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
         <Style x:Key="DayTextStyle" TargetType="TextBlock">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsCurrentMonth}" Value="True">
@@ -55,6 +56,17 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="CornerRadius" Value="3" />
             <Setter Property="Margin" Value="2" />
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                    <DataTrigger.Setters>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="Opacity" Value="0.9"/>
+                    </DataTrigger.Setters>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         
         <Style x:Key="WeekEventTextBlockStyle" TargetType="TextBlock">

@@ -20,7 +20,13 @@ public partial class AllEventsView : Page, ICalendarEventsView<AllEventsViewMode
     }
     public void ClearSelected_ButtonClick(object sender, RoutedEventArgs e)
     {
-        AllEventsViewModel.SelectedEvents.Clear();
+        if (AllEventsViewModel.SelectedEvents != null)
+        {
+            foreach (var selectedEvent in AllEventsViewModel.SelectedEvents.ToList())
+            {
+                selectedEvent.IsSelected = false;
+            }
+        }
     }
 
 
