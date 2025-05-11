@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
-using Calendar.Data;
 
-namespace Calendar.ViewModels;
+namespace Calendar;
 
 public class AllEventsViewModel : EventsAssign, INotifyPropertyChanged
 {

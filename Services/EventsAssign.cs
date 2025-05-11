@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel;
-using Calendar.Data;
-using Calendar.ViewModels;
 
 namespace Calendar;
 
@@ -13,9 +11,8 @@ public class EventsAssign : CalendarElementViewModel
     {
         EventRepository.EventAdded += OnEventAdded;
         EventRepository.EventUpdated += OnEventUpdated;
-    }
-    
-    public void UpdateEvent(DayEventViewModel dayEvent)
+    }    
+    public virtual void OnEventUpdated(object sender, DayEventViewModel dayEvent)
     {
         if (Events != null)
         {
@@ -28,12 +25,20 @@ public class EventsAssign : CalendarElementViewModel
             }
         }
     }
-    
-    public virtual void OnEventUpdated(object sender, DayEventViewModel dayEvent)
+
+    public virtual void OnEventRemoved(object sender, DayEventViewModel dayEvent)
     {
-        UpdateEvent(dayEvent);
+        if (Events != null)
+        {
+            var existing = Events.FirstOrDefault(ev => ev.Id == dayEvent.Id);
+            if (existing != null)
+            {
+                int index = Events.IndexOf(existing);
+                Events.RemoveAt(index);
+            }
+        }
     }
-    
+
     public virtual void OnEventAdded(object sender, DayEventViewModel dayEvent)
     {
         if (Date != null && dayEvent != null && Date.Date == dayEvent.Date.Date)

@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
-namespace Calendar;
+﻿namespace Calendar;
 
 public partial class MainWindow : Window
 {
