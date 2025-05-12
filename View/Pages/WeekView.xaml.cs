@@ -2,7 +2,7 @@
 
 public partial class WeekView : Page, ICalendarEventsView<WeekViewModel>
 {
-    public static event EventHandler<int> EventSelectedEvent;
+    public static event EventHandler<int>? EventSelectedEvent;
     public WeekViewModel ViewModel { get; set; } = new();
     public ICalendarEventsView<WeekViewModel> Instance { get; set; }
     
@@ -22,13 +22,14 @@ public partial class WeekView : Page, ICalendarEventsView<WeekViewModel>
 
     private void ChangeMonth_Click(object sender, RoutedEventArgs e)
         => Instance.OnStep(sender, CalendarInfo.ChangeShowWeek);
-    
+
     private void EventButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button && button.Tag is int id)
         {
+            Instance.OpenEditPage();
             EventSelectedEvent?.Invoke(this, id);
         }
-        
+
     }
 }

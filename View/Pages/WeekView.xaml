@@ -38,11 +38,11 @@
                     </StackPanel>
 
                 </StackPanel>
-                
+
             </StackPanel>
 
             <ItemsControl Grid.Row="1"
-                         ItemsSource="{Binding DaysOfWeekList}">    
+                         ItemsSource="{Binding DaysOfWeekList}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Rows="1" Columns="7" />

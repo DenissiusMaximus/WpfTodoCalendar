@@ -113,7 +113,7 @@
 
                                                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                                             <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="3*" />
+                                                                <ColumnDefinition Width="*" />
                                                                 <ColumnDefinition Width="Auto" />
                                                             </Grid.ColumnDefinitions>
                                                             <TextBlock Grid.Column="0" Text="{Binding Name}"

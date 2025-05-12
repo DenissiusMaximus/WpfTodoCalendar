@@ -41,4 +41,10 @@ public partial class MainWindow : Window
     {
         ManageContentFrame.Content = null;
     }
+
+    public void OpenEventManagementEditView()
+    {
+        _eventManagerView.EventContentHost.Content = new EditEventUserControl();
+        ManageContentFrame.Navigate(_eventManagerView);
+    }
 }

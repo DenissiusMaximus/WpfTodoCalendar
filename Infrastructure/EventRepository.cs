@@ -4,9 +4,9 @@ public class EventRepository
     private readonly DbManager _dbManager;
     public static event EventHandler<DayEventViewModel> EventAdded;
     public static event EventHandler<DayEventViewModel> EventUpdated;
-    public static event EventHandler<DayEventViewModel> EventDeleted;
+    public static event EventHandler<DayEventViewModel> EventRemoved;
     
-    public EventRepository(string dbPath = @"Resources\DB\database.sqlite;")
+    public EventRepository(string dbPath = @"Resources\DB\database.sqlite")
     {
         _dbManager = new DbManager(dbPath);
     }
@@ -22,26 +22,34 @@ public class EventRepository
         
         await command.ExecuteNonQueryAsync();
 
-        EventDeleted?.Invoke(this, new DayEventViewModel(e));
+        EventRemoved?.Invoke(this, new DayEventViewModel(e));
     }
 
     public async Task EditEventAsync(Event e)
     {
-        using var connection = _dbManager.GetConnection();
-        await connection.OpenAsync();
-        
-        var command = connection.CreateCommand();
-        command.CommandText = "UPDATE Events SET Date = @date, Name = @name, Description = @description, Priority = @priority, Type = @type WHERE Id = @id";
-        
-        command.Parameters.AddWithValue("@id", e.Id);
-        command.Parameters.AddWithValue("@date", e.Date);
-        command.Parameters.AddWithValue("@name", e.Name);
-        command.Parameters.AddWithValue("@description", e.Description ?? (object)DBNull.Value);
-        command.Parameters.AddWithValue("@priority", e.Priority ?? (object)DBNull.Value);
-        command.Parameters.AddWithValue("@type", e.Type ?? (object)DBNull.Value);
-        
-        await command.ExecuteNonQueryAsync();
-        
+        try
+        {
+            using var connection = _dbManager.GetConnection();
+            await connection.OpenAsync();
+            
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE Events SET Date = @date, Name = @name, Description = @description, Priority = @priority, Type = @type WHERE Id = @id";
+            
+            command.Parameters.AddWithValue("@id", e.Id);
+            command.Parameters.AddWithValue("@date", e.Date);
+            command.Parameters.AddWithValue("@name", e.Name);
+            command.Parameters.AddWithValue("@description", e.Description ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@priority", e.Priority ?? 0);
+            command.Parameters.AddWithValue("@type", e.Type ?? (object)DBNull.Value);
+            
+            await command.ExecuteNonQueryAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating event: {ex.Message}");
+            return;
+        }
+
         EventUpdated?.Invoke(this, new DayEventViewModel(e));
     }
     

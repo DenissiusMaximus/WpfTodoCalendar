@@ -9,7 +9,7 @@ public class DbManager
     
     public DbManager(string path)
     {
-        ConnectionString = $"Data Source={path}";
+        ConnectionString = $"Data Source={path};";
     }
     
     public SqliteConnection GetConnection()

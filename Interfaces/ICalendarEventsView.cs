@@ -2,6 +2,7 @@
 
 public interface ICalendarEventsView<T> where T : CalendarElementViewModel, new()
 {
+    public static event EventHandler<int> EventSelectedEvent;
     public T ViewModel { get; set; }
     public ICalendarEventsView<T> Instance { get; set; }
     public void SetDataContext();
@@ -20,5 +21,15 @@ public interface ICalendarEventsView<T> where T : CalendarElementViewModel, new(
 
         ViewModel = new T();
         SetDataContext();
+    }
+
+    public void OpenEditPage()
+    {
+        var mainWindow = Application.Current.MainWindow as MainWindow;
+
+        if (mainWindow != null)
+            if (mainWindow.ManageContentFrame.Content is not EditEventUserControl)
+                mainWindow.OpenEventManagementEditView();
+
     }
 }

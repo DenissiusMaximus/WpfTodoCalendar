@@ -2,7 +2,7 @@
 
 public partial class MonthView : Page, ICalendarEventsView<MonthViewModel>
 {
-    public static event EventHandler<int> EventSelectedEvent;
+    public static event EventHandler<int>? EventSelectedEvent;
     public MonthViewModel ViewModel { get; set; } = new();
     public ICalendarEventsView<MonthViewModel> Instance { get; set; }
 
@@ -46,8 +46,10 @@ public partial class MonthView : Page, ICalendarEventsView<MonthViewModel>
     {
         if (sender is Button button && button.Tag is int id)
         {
+            Instance.OpenEditPage();
+
             EventSelectedEvent?.Invoke(this, id);
         }
-        
+
     }
 }

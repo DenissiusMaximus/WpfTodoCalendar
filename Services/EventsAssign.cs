@@ -11,8 +11,22 @@ public class EventsAssign : CalendarElementViewModel
     {
         EventRepository.EventAdded += OnEventAdded;
         EventRepository.EventUpdated += OnEventUpdated;
+        EventRepository.EventRemoved += OnEventRemoved;
     }
-    
+
+    public void OnEventRemoved(object sender, DayEventViewModel dayEvent)
+    {
+        if (Events != null)
+        {
+            var existing = Events.FirstOrDefault(ev => ev.Id == dayEvent.Id);
+            if (existing != null)
+            {
+                int index = Events.IndexOf(existing);
+                Events.RemoveAt(index);
+            }
+        }
+    }
+
     public void UpdateEvent(DayEventViewModel dayEvent)
     {
         if (Events != null)

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Calendar"
       mc:Ignorable="d"
       Title="EventManager">
-    <Grid Margin="0 40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="300">
+    <Grid Margin="0 40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

@@ -23,8 +23,6 @@ public partial class EditEventUserControl : UserControl
 
     public void SetNewEvent(object sender, int id)
     {
-        
-        
         var rep = new EventRepository();
         var e = rep.GetEventByIdAsync(id).Result;
         
@@ -58,25 +56,11 @@ public partial class EditEventUserControl : UserControl
 
     }
 
-    private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
-    {
-        
-    }
-
     private void OkButton_OnClick(object sender, RoutedEventArgs e)
     {
-        EventName = NameTextBlock.Text;
-        if (EventName == "")
-        {
-            MessageBox.Show("Please enter a name for the event");
-            return;
-        }
-        
         DateTime? eventDate = EventDatePicker.SelectedDate ?? DateTime.Now.Date;
-        var eventTimeHours = HoursTextBox.Text;
-        var eventTimeMinutes = MinutesTextBox.Text;
-        
-        
+        EventName = NameTextBlock.Text;
+
         try
         {
             int hours;
@@ -89,7 +73,7 @@ public partial class EditEventUserControl : UserControl
             int.TryParse(MinutesTextBox.Text, out minutes);
             
             if (minutes >= 0 && minutes <= 59)
-                minutes = 30;
+                minutes = 45;
     
             EventDateTime = eventDate.Value.Date.AddHours(hours).AddMinutes(minutes);
         }
@@ -123,25 +107,13 @@ public partial class EditEventUserControl : UserControl
         {
             MessageBox.Show($"Invalid event: \n{ex.Message}");
         }
-        
 
-        MessageBox.Show("Event edited successfully!");
     }
 
     public void DeleteSelected_ButtonClick(object sender, RoutedEventArgs e)
     {
-        var result = MessageBox.Show("Delete selected events?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-        if (result == MessageBoxResult.Yes)
-        {
-            DeleteSelectedEvents();
-        }
-
-    }
-
-    private void DeleteSelectedEvents()
-    {
         var rep = new EventRepository();
         rep.DeleteEventAsync(_event);
+
     }
 }
