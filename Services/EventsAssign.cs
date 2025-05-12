@@ -65,33 +65,4 @@ public class EventsAssign : CalendarElementViewModel
     protected virtual void DayEvent_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
     }
-    
-    public void AddEvents(ObservableCollection<DayEventViewModel> events)
-    {
-        if (Events == null)
-        {
-            Events = new ObservableCollection<DayEventViewModel>();
-        }
-        
-        foreach (var dayEvent in events)
-        {
-            Events.Add(dayEvent);
-        }
-    }
-    
-    public void ClearEvents()
-    {
-        if (Events != null)
-        {
-            Events.Clear();
-        }
-    }
-
-    public void RemoveEvent(DayEventViewModel dayEvent)
-    {
-        if (Events != null)
-        {
-            Events.Remove(dayEvent);
-        }
-    }
 }

@@ -2,6 +2,7 @@
 
 public partial class AllEventsView : Page, ICalendarEventsView<AllEventsViewModel>
 {
+    public static event EventHandler<int>? EventSelectedEvent;
     public AllEventsViewModel ViewModel { get; set; } = new();
     public ICalendarEventsView<AllEventsViewModel> Instance { get; set; }
     
@@ -56,5 +57,15 @@ public partial class AllEventsView : Page, ICalendarEventsView<AllEventsViewMode
 
             AllEventsViewModel.SelectedEvents.Remove(selectedEvent);
         }
+    }
+
+    private void EventButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button && button.Tag is int id)
+        {
+            Instance.OpenEditPage();
+            EventSelectedEvent?.Invoke(this, id);
+        }
+
     }
 }

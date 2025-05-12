@@ -7,6 +7,7 @@ public partial class EditEventUserControl : UserControl
     private static int PriorityValue;
     private static DateTime EventDateTime;
     private static Event _event;
+    private static List<Event> _loadedEvents;
     
     public EditEventUserControl()
     {
@@ -21,10 +22,10 @@ public partial class EditEventUserControl : UserControl
         WeekView.EventSelectedEvent += SetNewEvent;
     }
 
-    public void SetNewEvent(object sender, int id)
+    public async void SetNewEvent(object sender, int id)
     {
         var rep = new EventRepository();
-        var e = rep.GetEventByIdAsync(id).Result;
+        var e = await rep.GetEventByIdAsync(id);
         
         _event = e;
         SetValues();
@@ -56,7 +57,7 @@ public partial class EditEventUserControl : UserControl
 
     }
 
-    private void OkButton_OnClick(object sender, RoutedEventArgs e)
+    private async void OkButton_OnClick(object sender, RoutedEventArgs e)
     {
         DateTime? eventDate = EventDatePicker.SelectedDate ?? DateTime.Now.Date;
         EventName = NameTextBlock.Text;
@@ -66,13 +67,13 @@ public partial class EditEventUserControl : UserControl
             int hours;
             int.TryParse(HoursTextBox.Text, out hours);
 
-            if (hours >= 0 && hours <= 24)
+            if (hours <= 0 && hours >= 24)
                 hours = 12;
 
             int minutes;
             int.TryParse(MinutesTextBox.Text, out minutes);
             
-            if (minutes >= 0 && minutes <= 59)
+            if (minutes <= 0 && minutes >= 59)
                 minutes = 45;
     
             EventDateTime = eventDate.Value.Date.AddHours(hours).AddMinutes(minutes);
@@ -101,7 +102,7 @@ public partial class EditEventUserControl : UserControl
             };
             
             var rep = new EventRepository();
-            rep.EditEventAsync(newEvent);
+            await rep.EditEventAsync(newEvent);
         }
         catch (Exception ex)
         {
@@ -110,10 +111,10 @@ public partial class EditEventUserControl : UserControl
 
     }
 
-    public void DeleteSelected_ButtonClick(object sender, RoutedEventArgs e)
+    public async void DeleteSelected_ButtonClick(object sender, RoutedEventArgs e)
     {
         var rep = new EventRepository();
-        rep.DeleteEventAsync(_event);
+        await rep.DeleteEventAsync(_event);
 
     }
 }
